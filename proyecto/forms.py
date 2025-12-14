@@ -4,7 +4,7 @@ from .models import Energia, Particula
 class EnergiaForm(forms.ModelForm):
     class Meta:
         model = Energia
-        fields = ["tipo", "formula"]
+        fields = ["tipo", "formula", "imagen"]
 class ParticulaForm(forms.ModelForm):
     class Meta:
         model = Particula

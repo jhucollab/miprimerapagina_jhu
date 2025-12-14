@@ -3,7 +3,7 @@ from django.db import models
 #tipos= energia
 class Energia(models.Model):
     tipo = models.CharField(max_length=100)
-    formula = models.CharField()
+    formula = models.CharField(max_length=100)
     def __str__(self):
         return f"energia= {self.tipo}"
     imagen = models.ImageField(upload_to='energia', null=True, blank=True)

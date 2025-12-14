@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import home, aboutme, pag_secreta, EnergiaListView
+from .views import aboutme, pag_secreta, EnergiaListView
 from .views import inicio
 
 

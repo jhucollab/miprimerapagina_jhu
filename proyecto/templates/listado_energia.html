@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% block content %}
-
 <div style="max-width:900px; margin:auto; padding:25px;
             background:#ffeef7; border-radius:18px;
             box-shadow:0 0 12px rgba(255, 170, 190, 0.4);
@@ -8,7 +7,7 @@
 
     <h2 style="text-align:center; color:#c74b7b; font-size:30px;
                text-shadow:0 0 5px white;">
-        ✿ Listado de Energías 𖦹 ✿
+         Listado de Energias 𖦹
     </h2>
 
     <form method="GET" style="text-align:center; margin-bottom:15px;">
@@ -17,7 +16,7 @@
         <button type="submit"
                 style="background:#d45fa3; color:white;
                        border-radius:10px; padding:8px 16px; border:none; cursor:pointer;">
-            Buscar 🌸
+            Buscar
         </button>
     </form>
 
@@ -25,7 +24,7 @@
         <thead style="background:#ffd4e7;">
             <tr>
                 <th style="padding:10px;">Tipo</th>
-                <th>Fórmula</th>
+                <th>Formula</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -35,10 +34,12 @@
             <tr style="background:white; border-bottom:1px solid #ffd4e7;">
                 <td style="padding:10px;">{{ energia.tipo }}</td>
                 <td>{{ energia.formula }}</td>
-
-
-
                 <td>
+                    {% if energia.imagen %}
+                        <img src="{{ energia.imagen.url }}" width="150">
+                    {% else %}
+                     <p>Sin imagen</p>
+                    {% endif %}
                     <a href="{% url 'editar_energia' energia.id %}"
                        style="color:#c74b7b;">Editar</a> |
                     <a href="{% url 'eliminar_energia' energia.id %}"
@@ -48,7 +49,7 @@
             {% empty %}
             <tr>
                 <td colspan="4" style="text-align:center; padding:15px;">
-                    ✧ No se ha registrado ninguna energía ✧
+                    No se ha registrado ninguna energia
                 </td>
             </tr>
             {% endfor %}

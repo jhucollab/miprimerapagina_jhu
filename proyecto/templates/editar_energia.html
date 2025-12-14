@@ -1,33 +1,34 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
 <div style="max-width:600px; margin:auto; padding:25px;
-            background:#faf0ff; border-radius:18px;
-            border:2px solid #d6caff; box-shadow:0 0 12px rgba(60, 40, 120, 0.4);">
+            background:#ffeef7; border-radius:18px;
+            border:2px solid #cfbfff; box-shadow:0 0 12px rgba(52, 32, 102, 0.4);">
 
-    <h1 style="text-align:center; color:#5d4fa3;">
-        ⛩ Editar Energía ✿
+    <h1 style="text-align:center; color:#524c87b5;">
+        ✨ Editar Energía 🎐
     </h1>
 
-    <form method="post" style="margin-top:20px;">
-        {% csrf_token %}
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
 
+    <button type="submit">Guardar</button>
+</form>
         <label>Tipo:</label>
-        <input type="text" name="tipo" value="{{ energia.tipo }}" style="width:100%; padding:8px; margin:8px 0; border-radius:8px; border:1px solid #ccbbee;">
+        <input type="text" name="tipo" value="{{ energia.tipo }}">
 
         <label>Fórmula:</label>
-        <input type="text" name="formula" value="{{ energia.formula }}" style="width:100%; padding:8px; margin:8px 0; border-radius:8px; border:1px solid #ccbbee;">
+        <input type="text" name="formula" value="{{ energia.formula }}">
 
-        <button type="submit" style="
-            background:#4e3e7a; color:white; padding:10px; border:none;
-            border-radius:10px; width:100%; font-size:16px; cursor:pointer;">
-            Guardar Cambios 🌸
-        </button>
+        <label>Imagen:</label>
+        <input type="file" name="imagen">
+
+        <button type="submit">Guardar</button>
     </form>
 
 </div>
 
 {% endblock %}
-
-
 

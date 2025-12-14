@@ -23,13 +23,17 @@ from django.shortcuts import render, redirect
 #crear energia formulario
 def crear_energia(request):
     if request.method == "POST":
-        form = EnergiaForm(request.POST)
+        form = EnergiaForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("listado_energia")
     else:
         form = EnergiaForm()
-    return render(request, "crear_energia.html", {"form": form})
+
+    return render(request, "crear_energia.html", {
+        "form": form,
+        "usuario_registrado": request.user.is_authenticated
+    })
 #crear particula formulario
 def crear_particula(request):
     if request.method == "POST":
@@ -45,12 +49,17 @@ from .models import Energia, Particula
 #editar
 def editar_energia(request, id):
     energia = get_object_or_404(Energia, id=id)
-    if request.method == 'POST':
-        energia.nombre = request.POST.get('nombre')
-        energia.formula = request.POST.get('formula')
-        energia.save()
-        return redirect('listado_energia')
-    return render(request, 'editar_energia.html', {'energia': energia})
+
+    if request.method == "POST":
+        form = EnergiaForm(request.POST, request.FILES, instance=energia)
+        if form.is_valid():
+            form.save()
+            return redirect("listado_energia")
+    else:
+        form = EnergiaForm(instance=energia)
+
+    return render(request, "editar_energia.html", {"form": form, "energia": energia})
+
 def editar_particula(request, id):
     particula = get_object_or_404(Particula, id=id)
     if request.method == 'POST':
@@ -72,14 +81,11 @@ def eliminar_particula(request, id):
         particula.delete()
         return redirect('listado_particula')
     return render(request, 'eliminar_particula.html', {'particula': particula})
-from .mixins import SoloLogueadosMixin
-def home(request):
-    return render(request, 'home.html')
 def aboutme(request):
     return render(request, 'aboutme.html')
 from django.views.generic import ListView
 from django.contrib import messages
-class EnergiaListView(SoloLogueadosMixin, ListView):
+class EnergiaListView(ListView):
     model = Energia
     template_name = 'listado_energia.html'
     def get_queryset(self):

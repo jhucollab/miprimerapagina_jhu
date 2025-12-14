@@ -6,18 +6,19 @@
             border:2px solid #cfbfff; box-shadow:0 0 12px rgba(52, 32, 102, 0.4);">
 
     <h1 style="text-align:center; color:#524c87b5;">
-        ✿ Agregar Energía 𓏲 🎐 ✿
+         Agregar Energia 𓏲 🎐
     </h1>
 
-    <form method="post" style="margin-top:20px;">
-        {% csrf_token %}
-        {{ form.as_p }}
+   <form method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       {{ form.as_p }}
+
 
         <button type="submit" style="
             background:#4e3e7a; color:white; padding:10px 20px;
             border:none; border-radius:10px; cursor:pointer; width:100%;
             font-size:16px;">
-            Guardar Energía 🌸
+            guardar Energia
         </button>
     </form>
 

@@ -19,21 +19,7 @@ def login_usuario(request):
 
     return render(request, "usuarios/login.html")
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-
-def login_usuario(request):
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = authenticate(request, username=username, password=password)
-
-        if user is not None:
-            login(request, user)  
-            return redirect("pag_secreta")  
-            return render(request, "usuarios/login.html", {"error": "Credenciales incorrectas"})
-
-    return render(request, "usuarios/login.html")
+from django.contrib.auth import authenticate, logout
 def logout_usuario(request):
     logout(request)
     return redirect("inicio")

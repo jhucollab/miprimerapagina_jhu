@@ -7,28 +7,23 @@
             border:2px solid #cfbfff; box-shadow:0 0 12px rgba(52, 32, 102, 0.4);">
 
     <h1 style="text-align:center; color:#524c87b5;">
-        ✨ Editar Energía 🎐
+         Editar Energia 🎐
     </h1>
 
     <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
+        {% csrf_token %}
+        {{ form.as_p }}
 
-    <button type="submit">Guardar</button>
-</form>
-        <label>Tipo:</label>
-        <input type="text" name="tipo" value="{{ energia.tipo }}">
-
-        <label>Fórmula:</label>
-        <input type="text" name="formula" value="{{ energia.formula }}">
-
-        <label>Imagen:</label>
-        <input type="file" name="imagen">
-
-        <button type="submit">Guardar</button>
+        <button type="submit"
+                style="background:#4e3e7a; color:white;
+                       padding:10px 20px; border:none;
+                       border-radius:10px; cursor:pointer; width:100%;">
+            Guardar cambios
+        </button>
     </form>
 
 </div>
 
 {% endblock %}
+
 

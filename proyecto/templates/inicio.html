@@ -19,6 +19,7 @@
 
     <hr style="border:0; border-top:1px solid #6b4fa8; margin:20px 0;">
 
+    <!-- FISICA / CIENCIAS -->
     <h3 style="color:#4c3e91;">fisica, ciencias</h3>
     <ul style="list-style:none; padding-left:0; line-height:1.8;">
 
@@ -49,33 +50,47 @@
                ➕ Crear nueva particula
             </a>
         </li>
+
     </ul>
 
     <hr style="border:0; border-top:1px solid #6b4fa8; margin:20px 0;">
 
+    <!-- INGRESO -->
     <h3 style="color:#4c3e91;">ingreso</h3>
     <ul style="list-style:none; padding-left:0; line-height:1.8;">
 
-        <li>
-            <a href="{% url 'login' %}" 
-               style="background:#ffd8fc; color:#50306b; padding:8px 15px; border-radius:10px; text-decoration:none;">
-               🔑 Iniciar sesion
-            </a>
-        </li>
+        {% if user.is_authenticated %}
 
-        <li>
-            <a href="{% url 'registro' %}" 
-               style="background:#ffd8fc; color:#50306b; padding:8px 15px; border-radius:10px; text-decoration:none;">
-               📝 Registrarse
-            </a>
-        </li>
+            <li>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit"
+                            style="background:#ffd8fc; color:#50306b;
+                                   padding:8px 15px; border-radius:10px;
+                                   border:none; cursor:pointer;
+                                   font-family:'Yu Mincho', serif;">
+                        🚪 Cerrar sesion
+                    </button>
+                </form>
+            </li>
 
-        <li>
-            <a href="{% url 'logout' %}" 
-               style="background:#ffd8fc; color:#50306b; padding:8px 15px; border-radius:10px; text-decoration:none;">
-               🚪 Cerrar sesion
-            </a>
-        </li>
+        {% else %}
+
+            <li>
+                <a href="{% url 'login' %}" 
+                   style="background:#ffd8fc; color:#50306b; padding:8px 15px; border-radius:10px; text-decoration:none;">
+                   🔑 Iniciar sesion
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'registro' %}" 
+                   style="background:#ffd8fc; color:#50306b; padding:8px 15px; border-radius:10px; text-decoration:none;">
+                   📝 Registrarse
+                </a>
+            </li>
+
+        {% endif %}
 
         <li>
             <a href="{% url 'aboutme' %}" 
@@ -83,6 +98,7 @@
                🌸 About Me
             </a>
         </li>
+
     </ul>
 
     <hr style="border:0; border-top:1px solid #6b4fa8; margin:20px 0;">
@@ -94,6 +110,8 @@
 </div>
 
 {% endblock %}
+
+
 
 
 

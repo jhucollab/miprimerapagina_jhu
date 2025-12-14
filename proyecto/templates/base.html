@@ -16,9 +16,7 @@
             <a href="{% url 'listado_particula' %}" style="color:white; margin:0 10px; text-decoration:none;">Partículas</a>
             <a href="{% url 'crear_energia' %}" style="color:white; margin:0 10px; text-decoration:none;">Nueva Energía</a>
             <a href="{% url 'crear_particula' %}" style="color:white; margin:0 10px; text-decoration:none;">Nueva Partícula</a>
-
             <span style="margin:0 15px;">|</span>
-
          {% if user.is_authenticated %}
            <form action="{% url 'logout' %}" method="post" style="display:inline;">
          {% csrf_token %}

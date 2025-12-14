@@ -49,7 +49,6 @@ from .models import Energia, Particula
 #editar
 def editar_energia(request, id):
     energia = get_object_or_404(Energia, id=id)
-
     if request.method == "POST":
         form = EnergiaForm(request.POST, request.FILES, instance=energia)
         if form.is_valid():

@@ -3,9 +3,7 @@
 
 Crear, ver, editar, borrar y buscar energias.
 
-Formularios con estilo japonés (sakura, tonos lilas).
-
-Listados ordenados, nombre y formula.
+Listados con nombre y formula.
 
 # 2. gestion de Particulas 🏮
 
@@ -32,11 +30,5 @@ imagen = en editar, usuario puede agregar imagenes en su cv.(agrege 1 imagen en 
 # 5. navegacion 🏮
 
 barra superior con acceso a inicio(tambien tiene links a los urls), Energias, Particulas, agregr energia y particula, registrarse(si no ha iniciado sesion), iniciar sesion(lleva a pag_secreta), cerrar sesion(lleva a inicio) y aboutme(permite editar, eliminar o crear su cv).
-
-diseño japones variado
-
-# 6. Seguridad, autenticacion 🏮
-LoginRequiredMixin
-Control de acceso para que cada usuario gestione unicamente su informacion.
 # http://127.0.0.1:8000/ (pag web)
 # link a video(drive)= https://docs.google.com/videos/d/1SXH7K7zDkQ8gdfIwRp1dSfn1-L5IrBtiBfq4wXbcRIE/edit?usp=sharing 
